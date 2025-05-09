@@ -6,15 +6,14 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import UserIcon from "../assets/user.png"
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
@@ -44,23 +43,23 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: {UserIcon},
           })
             .then(() => {
-              const { uid, email, displayName } = auth.currentUser;
+              const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
                   uid: uid,
                   email: email,
                   displayName: displayName,
+                  photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user);
+          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -77,8 +76,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -95,7 +92,7 @@ const Login = () => {
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/69bec183-9cc8-49d4-8fc2-08228d3c91b4/web/IN-en-20250414-TRIFECTA-perspective_c8273fb1-8860-4ff5-bd1c-c2c4b44d5f2a_small.jpg"
           alt="Login Background Image"
-          className="h-screen w-screen object-cover"
+          className="min-h-screen min-w-screen object-cover"
         />
       </div>
       <form
@@ -129,17 +126,20 @@ const Login = () => {
             placeholder="Password"
             className="border border-[#ffffff6a] bg-transparent p-4 my-2 w-full rounded-sm"
           />
+
           <p className="py-2 text-red-600">{errorMessage}</p>
+
           <button
             className=" rounded-sm p-2 my-2 font-semibold bg-[#f31d1d] text-white w-full"
             onClick={handleSignButtonClick}
           >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
+
           <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
             {isSignInForm
               ? "New to Netflix? Sign up now."
-              : "Already registered! Sign in now."}
+              : "Already registered? Sign in now."}
           </p>
         </div>
       </form>

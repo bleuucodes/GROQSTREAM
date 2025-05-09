@@ -16,7 +16,14 @@
 -Implemented signout 
 -update Profile call
 
--part -2
+-part-2 
+
+-BugFix: Sign up user dispalyname and profile picture update
+-BugFix: if user is not logged in redirect /browse to login pagr and vice-versa
+-Unsubscribe to onAuthStateChanged callback
+-Add hardcoded values to constants file
+-Register TMDB & create an app & get access token
+-Get data from TMDB now playing movies list
 
 
 # Features
