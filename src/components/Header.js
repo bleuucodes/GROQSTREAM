@@ -5,13 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleSignout = () => {
     signOut(auth)
       .then(() => {})
@@ -23,8 +25,7 @@ const Header = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        
-        const { uid, email, displayName,photoURL } = user;
+        const { uid, email, displayName, photoURL } = user;
         dispatch(
           addUser({
             uid: uid,
@@ -41,34 +42,61 @@ const Header = () => {
     });
 
     //Unsubscribe when component unmounts
-    return () => unsubscribe()
+    return () => unsubscribe();
   }, []);
 
+  const handleGptSearchClick = () => {
+    //Toggle GPT Search
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleLanguageChange = (e) => {
+    console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
-    <>
-      <div className="w-screen flex justify-between absolute px-8 py-2 bg-gradient-to-b from-black z-10">
-        <img
-          className="w-44 "
-          src={LOGO} 
-          alt="NetflixLogo"
-        />
-        {user && (
-          <div className="flex items-center p-2">
-            <img
-              className="w-8 h-8 rounded-sm mr-4"
-              alt="usericon"
-              src={UserIcon}
-            />
-            <button
-              onClick={handleSignout}
-              className="text-white bg-red-600 p-1 rounded-lg"
+    <div className="w-screen flex justify-between absolute px-8 py-2 bg-gradient-to-b from-black z-10">
+      <img className="w-44 " src={LOGO} alt="NetflixLogo" />
+      {user && (
+        <div className="flex items-center">
+          {showGptSearch && (
+            <select
+              className="px-2 py-1 m-2 bg-gray-900 text-white "
+              onChange={handleLanguageChange}
+              defaultValue=""
             >
-              Sign Out
-            </button>
-          </div>
-        )}
-      </div>
-    </>
+              <option value="" disabled>
+                Select Language
+              </option>
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select> 
+          )}
+          <img
+            className="w-8 h-8 rounded-sm mr-4"
+            alt="usericon"
+            src={UserIcon}
+          />
+          <button
+            className="py-1 px-6 mr-4 bg-[#0f791fdb] text-white rounded-sm"
+            onClick={handleGptSearchClick}
+          >
+            {showGptSearch ? "Home Page" :"GPT Search"}
+          </button>
+
+          <button
+            onClick={handleSignout}
+            className="text-white px-2 py-1 rounded-sm cursor-pointer bg-[#e7d7d73c] "
+          >
+            Sign Out
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 

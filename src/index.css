@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    overflow-x: hidden;
+}
+
+.movie-scroll-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.movie-scroll-container::-webkit-scrollbar {
+    display: none;
+}

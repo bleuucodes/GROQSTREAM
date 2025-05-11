@@ -1,5 +1,7 @@
 # Netflix GPT
 
+-part-1
+
 -Create React App
 -Configured Tailwindcss
 -Header
@@ -32,6 +34,19 @@
 -update store with trailer video data
 -embedded the youtube video and make it autoplay and mute
 -tailwind classes for main container
+-Build secondary component
+-Build movie list 
+-Build movie card
+-TMDB image CDN URL
+-Made the browse page amzing with Tailwind CSS
+-usePopularMovies custom hook
+
+-part 3
+
+-GPT Search Page
+-GPT Search Bar
+-(Bonus) Multi-language feauture in our app
+
 
 # Features
  
