@@ -9,9 +9,7 @@ const MovieList = ({ title, movies }) => {
       <div className=" flex overflow-x-scroll movie-scroll-container ">
         <div className="flex cursor-pointer">
 
-          {movies === null
-            ? null
-            : movies.map((movie) => (
+          {movies && movies.map((movie) => (
                 <MovieCard posterPath={movie.poster_path} key={movie.id}/>
               ))}
         </div>

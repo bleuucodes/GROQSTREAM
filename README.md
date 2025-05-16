@@ -45,8 +45,13 @@
 
 -GPT Search Page
 -GPT Search Bar
+<<<<<<< HEAD
 -(Bonus) Multi-language feauture in our app
 
+=======
+-(Bonus) Multi-language feature in our app
+-
+>>>>>>> 929a325 (commit)
 
 # Features
  

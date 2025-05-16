@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import UserIcon from "../assets/user.png"
+import UserIcon from "../assets/user.png";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -44,7 +44,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: {UserIcon},
+            photoURL: { UserIcon },
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -60,7 +60,6 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -137,10 +136,22 @@ const Login = () => {
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
 
-          <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
-            {isSignInForm
-              ? "New to Netflix? Sign up now."
-              : "Already registered? Sign in now."}
+          <p className="py-4 " onClick={toggleSignInForm}>
+            {isSignInForm ? (
+              <>
+                New to Netflix?{" "}
+                <span className="text-blue-600  cursor-pointer hover:underline">
+                  Sign up
+                </span>
+              </>
+            ) : (
+              <>
+                Already registered?{" "}
+                <span className="text-blue-600 cursor-pointer hover:underline">
+                  Sign in
+                </span>
+              </>
+            )}
           </p>
         </div>
       </form>
