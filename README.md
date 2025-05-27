@@ -1,73 +1,52 @@
-# Netflix GPT
+#GROQSTREAM
 
--part-1
+GROQSTREAM is a Netflix-inspired streaming app built using *React, **Tailwind CSS, **Firebase, **TMDB API, and **Groq AI*. It features user authentication, real-time movie browsing, and an AI-powered movie recommendation system. The app is fully responsive, multilingual, and designed with performance and user experience in mind.
 
--Create React App
--Configured Tailwindcss
--Header
--Routing of App
--Login form
--Sign up form
--Form Validation
--useRef Hook
--Firebase Setup
--Deploying our app to production
--Create SignUp User Account 
--Implement sign in user API
--Created Redux store with userSLice
--Implemented signout 
--update Profile call
+## Features
 
--part-2 
+### User Authentication
+- Sign Up / Sign In with validation
+- Firebase authentication
+- User profile updates and sign out
+- Route protection based on auth state
 
--BugFix: Sign up user dispalyname and profile picture update
--BugFix: if user is not logged in redirect /browse to login pagr and vice-versa
--Unsubscribe to onAuthStateChanged callback
--Add hardcoded values to constants file
--Register TMDB & create an app & get access token
--Get data from TMDB now playing movies list
--Custom Hook for now playing movies
--created movieslice
--update store with movies data
--planning for mainconatiner and secondarey conatiner
--fetch data for tariler video
--update store with trailer video data
--embedded the youtube video and make it autoplay and mute
--tailwind classes for main container
--Build secondary component
--Build movie list 
--Build movie card
--TMDB image CDN URL
--Made the browse page amzing with Tailwind CSS
--usePopularMovies custom hook
+### Movie Browsing (via TMDB)
+- "Now Playing" and "Popular" movies
+- Movie trailer playback (autoplay, muted)
+- Movie list and card components
+- Custom hooks for data fetching
+- Responsive design with Tailwind CSS
 
--part 3
+### Groq AI Integration
+- GPT-style movie search and suggestions
+- Search bar with real-time input
+- Context-aware recommendations
 
--GPT Search Page
--GPT Search Bar
-<<<<<<< HEAD
--(Bonus) Multi-language feauture in our app
+### Additional Highlights
+- Multi-language support
+- Redux Toolkit (userSlice, movieSlice)
+- Environment-based config
+- Deployed and production-ready
 
-=======
--(Bonus) Multi-language feature in our app
--
->>>>>>> 929a325 (commit)
+## Tech Stack
 
-# Features
- 
--Login/Sign Up
-   -Sign In/ Sign up Form
-   -redirect to Browse Page
--Browse (after authentication)
-   -Header
-   -Main Movie
-      -Trailer in background
-      -Title & Description
-      -MovieSuggestion
-         -MovieLists * n
--NetflixGPT
-    -Search Bar
-    -Movie Suggestions
-    
+- *React.js*
+- *Tailwind CSS*
+- *Redux Toolkit*
+- *Firebase Auth*
+- *TMDB API*
+- *Groq AI*
+- *YouTube Embed*
+- *React Router*
+- *Custom Hooks*
 
-    
+## Getting Started
+
+### Prerequisites
+
+- Node.js & npm
+- Firebase project
+- TMDB API key
+- Groq AI access
+
+

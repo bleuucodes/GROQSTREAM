@@ -4,7 +4,7 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer' + process.env.REACT_APP_GROQ_API_KEY
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTkxNjc2NTE5Yjc1MTlhZWFjNzA3NmMyNjA4MjI5MiIsIm5iZiI6MTc0NjgwOTc5Ni4wMzcsInN1YiI6IjY4MWUzM2M0M2FhZTlhOTU3NDYzYmZmOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6JDVUP-_hLyZULZ8HSPnPBsWBB-0FCyfPrT9Lh_PY_0'
     }
   };
 
@@ -20,4 +20,4 @@ export const SUPPORTED_LANGUAGES = [
 
 ]
 
-export const GROQ_API_KEY = process.env.REACT_APP_TMDB_KEY
+export const GROQ_API_KEY = "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"

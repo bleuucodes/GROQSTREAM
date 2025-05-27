@@ -4,10 +4,10 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../store/userSlice";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
-import { toggleGptSearchView } from "../utils/gptSlice";
-import { changeLanguage } from "../utils/configSlice";
+import { toggleGptSearchView } from "../store/gptSlice";
+import { changeLanguage } from "../store/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -56,18 +56,18 @@ const Header = () => {
   };
 
   return (
-    <div className="w-screen flex justify-between absolute px-8 py-2 bg-gradient-to-b from-black z-10">
-      <img className="w-44 " src={LOGO} alt="NetflixLogo" />
+    <div className="w-screen  absolute px-3 md:px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between ">
+      <img className="w-32 md:w-44 mx-0" src={LOGO} alt="NetflixLogo" />
       {user && (
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           {showGptSearch && (
             <select
-              className="px-2 py-1 m-2 bg-gray-900 text-white "
+              className="px-2 py-1 w-28 mx-3 bg-gray-900 text-white "
               onChange={handleLanguageChange}
               defaultValue=""
             >
               <option value="" disabled>
-                Select Language
+                 Language
               </option>
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.identifier} value={lang.identifier}>
@@ -77,12 +77,12 @@ const Header = () => {
             </select> 
           )}
           <img
-            className="w-8 h-8 rounded-sm mr-4"
+            className="w-8 h-8 rounded-sm mr-3"
             alt="usericon"
             src={UserIcon}
           />
           <button
-            className="py-1 px-6 mr-4 bg-[#0f791fdb] text-white rounded-sm"
+            className="py-1 px-3 mr-3 bg-[#166d67] text-white rounded-sm"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Home Page" :"GPT Search"}
@@ -90,7 +90,7 @@ const Header = () => {
 
           <button
             onClick={handleSignout}
-            className="text-white px-2 py-1 rounded-sm cursor-pointer bg-[#e7d7d73c] "
+            className="text-white px-2 py-1 rounded-sm cursor-pointer bg-[#9d1515] "
           >
             Sign Out
           </button>

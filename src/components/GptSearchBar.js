@@ -2,7 +2,7 @@ import { useRef } from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
-import { addGptMovieResult } from "../utils/gptSlice";
+import { addGptMovieResult } from "../store/gptSlice";
 import { groq } from "../utils/groqai";
 import Error from "./Error";
 
@@ -63,9 +63,9 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center ">
+    <div className="pt-[35%] md:pt-[6%] flex justify-center ">
       <form
-        className="w-1/2  grid grid-cols-12 "
+        className="w-full md:w-1/2  grid grid-cols-12 mx-3"
         onSubmit={(e) => e.preventDefault()}
       >
         <input

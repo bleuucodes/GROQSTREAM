@@ -9,7 +9,7 @@ import {
 import UserIcon from "../assets/user.png";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../store/userSlice";
 import { BG_URL } from "../utils/constants";
 
 const Login = () => {
@@ -97,7 +97,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="rounded-md absolute py-8 px-12 text-white bg-[#000000d7] w-[28rem] my-32 mx-auto right-0 left-0"
+        className="flex justify-center rounded-md absolute py-2 md:py-8 px-6 md:px-12 text-white bg-[#000000d7] md:w-[28rem] my-32 mx-auto right-0 left-0"
       >
         <div className="w-80 m-4">
           <h1 className="font-bold text-3xl my-4">
